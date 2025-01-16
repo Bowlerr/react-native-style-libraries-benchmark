@@ -12,12 +12,7 @@ const Demo = () => {
           onPress={() => alert(`Item ${i} clicked!`)}
           style={styles.touchable}
         >
-          <View
-            style={[
-              styles.box,
-              i % 2 === 0 ? styles.blueBackground : styles.grayBackground,
-            ]}
-          >
+          <View style={[styles.box(i % 2 !== 0)]}>
             <Text style={styles.title}>Item {i}</Text>
             <Text style={styles.body}>This is static content</Text>
           </View>
@@ -37,19 +32,14 @@ const styles = StyleSheet.create((theme) => ({
   touchable: {
     margin: 5,
   },
-  box: {
+  box: (isOdd) => ({
+    backgroundColor: isOdd ? "gray" : "blue",
     borderColor: theme.colors.red,
     padding: theme.spacing.s,
     borderWidth: 2,
     justifyContent: "center",
     alignItems: "center",
-  },
-  blueBackground: {
-    backgroundColor: "blue",
-  },
-  grayBackground: {
-    backgroundColor: "gray",
-  },
+  }),
   title: {
     fontSize: 24,
     fontWeight: "bold",

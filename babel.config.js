@@ -15,6 +15,7 @@ module.exports = function (api) {
           logTimings: true,
         },
       ],
+      ["react-native-unistyles/plugin"],
     ],
   };
 };
