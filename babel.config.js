@@ -16,6 +16,17 @@ module.exports = function (api) {
         },
       ],
       ["react-native-unistyles/plugin"],
+      [
+        "module-resolver",
+        {
+          root: ["./"],
+
+          alias: {
+            "@": "./",
+            "tailwind.config": "./tailwind.config.js",
+          },
+        },
+      ],
     ],
   };
 };
