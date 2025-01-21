@@ -1,22 +1,26 @@
 import { StyleSheet } from "react-native-unistyles";
 
+
 const palette = {
+  green: "green",
   red: "red",
   black: "#000",
   white: "#fff",
-  gray: "#888",
+  gray: "gray",
+  darkGray: 'darkgray',
+  lightGray: 'lightgray',
   blue: "blue",
-  textPrimary: "#333",
-  textSecondary: "#666",
   background: "#f5f5f5",
 };
 const darkTheme = {
   colors: {
+    green: palette.green,
     red: palette.red,
     black: palette.black,
     white: palette.white,
-    gray: palette.gray,
+    gray: palette.darkGray,
     blue: palette.blue,
+    secondary: "#c7c7c7",
     primary: "#90caf9", // Softer blue for dark mode
     textPrimary: palette.white, // White text for dark backgrounds
     textSecondary: "#c7c7c7", // Softer gray for secondary text
@@ -34,14 +38,16 @@ const darkTheme = {
 
 const theme = {
   colors: {
+    green: palette.green,
     red: palette.red,
     black: palette.black,
     white: palette.white,
-    gray: palette.gray,
+    gray: palette.lightGray,
     blue: palette.blue,
     primary: palette.blue,
-    textPrimary: palette.textPrimary,
-    textSecondary: palette.textSecondary,
+    secondary: palette.gray,
+    textPrimary: palette.black,
+    textSecondary: palette.gray,
     background: palette.background,
     text: palette.black,
   },
@@ -54,6 +60,15 @@ const theme = {
   },
 };
 
+
+type AppThemes = {
+  light: typeof theme;
+  dark: typeof darkTheme
+}
+
+declare module 'react-native-unistyles' {
+  export interface UnistylesThemes extends AppThemes {}
+}
 StyleSheet.configure({
   themes: {
     light: theme,

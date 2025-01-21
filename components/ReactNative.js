@@ -11,7 +11,12 @@ const Native = () => {
           onPress={() => alert(`Item ${i} clicked!`)}
           style={styles.touchable}
         >
-          <View style={[styles.styledView, i % 2 === 0 ? styles.blueBackground : styles.grayBackground]}>
+          <View
+            style={[
+              styles.styledView,
+              i % 2 === 0 ? styles.blueBackground : styles.grayBackground,
+            ]}
+          >
             <Text style={styles.title}>Item {i}</Text>
             <Text style={styles.body}>This is static content</Text>
           </View>
@@ -25,8 +30,8 @@ const styles = StyleSheet.create({
   container: {
     display: "flex",
     flexDirection: "row",
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
+    flexWrap: "wrap",
+    justifyContent: "space-around",
   },
   touchable: {
     margin: 5,
@@ -35,18 +40,18 @@ const styles = StyleSheet.create({
     borderColor: "red",
     borderWidth: 2,
     padding: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   blueBackground: {
-    backgroundColor: 'blue',
+    backgroundColor: "blue",
   },
   grayBackground: {
-    backgroundColor: 'gray',
+    backgroundColor: "gray",
   },
   title: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   body: {
     fontSize: 16,

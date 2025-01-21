@@ -11,7 +11,7 @@ import { COUNT } from "../utils";
 const Demo = () => {
   return (
     <GluestackUIProvider>
-      <HStack className="flex-wrap justify-around p-3">
+      <HStack className="flex-wrap justify-around">
         {new Array(COUNT).fill(0).map((_, i) => (
           <Pressable
             key={i}
@@ -19,9 +19,9 @@ const Demo = () => {
             className="m-2"
           >
             <Box
-              className={`w-[160px] bg-${
-                i % 2 === 0 ? "blue-300" : "gray-300"
-              } border-gray-700 rounded-md shadow-md`}
+              className={`w-40 "gray-500" border-gray-700 rounded-md shadow-md bg-${
+                i % 2 === 0 ? "blue-500" : "gray-500"
+              }`}
             >
               <Image
                 className="w-full h-[100px] rounded-t-md"
