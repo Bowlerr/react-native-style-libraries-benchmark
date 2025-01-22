@@ -17,8 +17,10 @@ import InputWithButton from "./StyledUI/InputWithButton";
 const StyledBox = styled.View`
   width: 160px;
   padding: 5px;
-  gap: 5px;
+  gap: 16px;
   border-radius: 5px;
+  border-color: black;
+  border-width: 2;
 
   margin-bottom: 10px;
   background-color: darkgray;
@@ -29,11 +31,11 @@ const Demo = () => {
     <View style={styles.container}>
       {new Array(COUNT / 5).fill(0).map((_, i) => (
         <StyledBox key={i}>
-          <TextAreaInput />
+          <TextAreaInput index={i} />
           <CheckBoxInput index={i} />
           <SwitchInput index={i} />
           <RadioInput index={i} />
-          <DropdownInput />
+          <DropdownInput index={i} />
           <InputWithButton index={i} />
         </StyledBox>
       ))}

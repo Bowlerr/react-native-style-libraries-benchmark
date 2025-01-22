@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, Modal, AccessibilityInfo, findNodeHandle } from 'react-native';
 import { FlatList, Pressable } from 'react-native-gesture-handler';
 import Animated, {
@@ -7,12 +7,13 @@ import Animated, {
   withSpring,
   interpolate,
   runOnJS,
+  cancelAnimation,
 } from 'react-native-reanimated';
 import { StyleSheet as UniStyles } from 'react-native-unistyles';
 
 const DropdownInput = ({index = 0}) => {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const [selectedValue, setSelectedValue] = React.useState('Select Option');
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedValue, setSelectedValue] = useState('Select Option');
   const dropdownTranslateY = useSharedValue(300); // Start below the viewport
   const dropdownRef = React.useRef<View>(null);
 
@@ -25,6 +26,7 @@ const DropdownInput = ({index = 0}) => {
 
   const openDropdown = () => {
     setIsOpen(true);
+    cancelAnimation(dropdownTranslateY)
     dropdownTranslateY.value = withSpring(0, { damping: 30, stiffness: 150 }, () => {
       runOnJS(accessbilityFocusOnMenu)();
     });
@@ -36,8 +38,9 @@ const DropdownInput = ({index = 0}) => {
   }
 
   const closeDropdown = () => {
+    cancelAnimation(dropdownTranslateY)
     dropdownTranslateY.value = withSpring(300, { damping: 20, stiffness: 150 }, () => {
-      runOnJS(setIsOpen)(false); // Close the dropdown after animation completes
+      runOnJS(setIsOpen)(false); 
     });
   };
  
@@ -47,7 +50,7 @@ const DropdownInput = ({index = 0}) => {
     transform: [{ translateY: dropdownTranslateY.value }],
   }));
   const backgroundStyle = useAnimatedStyle(() => ({
-    opacity: interpolate(dropdownTranslateY.value, [0, 300], [1, 0]),
+    opacity: interpolate(dropdownTranslateY.value, [0, 200], [1, 0]),
   }));
 
   return (
@@ -72,7 +75,7 @@ const DropdownInput = ({index = 0}) => {
         visible={isOpen}
         animationType="none"
         onRequestClose={closeDropdown}
-        accessibilityViewIsModal={true} // Indicates the modal contains focused content
+        accessibilityViewIsModal={true}
         accessible={true}
       >
         <Pressable
@@ -118,11 +121,11 @@ const DropdownInput = ({index = 0}) => {
 
 const styles = UniStyles.create((theme, rt) => ({
   container: {
-    borderColor: theme.colors.secondary,
+    borderColor: theme.colors.gray,
     borderWidth: 1,
     borderRadius: 10,
     alignItems: 'center',
-    backgroundColor: theme.colors.primary,
+    backgroundColor: theme.colors.background,
   },
   trigger: {
     padding: theme.spacing.m,
@@ -135,6 +138,7 @@ const styles = UniStyles.create((theme, rt) => ({
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     width: rt.screen.width,
     height: rt.screen.height,
+    paddingBottom: rt.navigationBar.height,
     justifyContent: 'flex-end',
   },
   label: {

@@ -12,7 +12,6 @@ import RadioInput from "./unistyleUI/RadioInput";
 import DropdownInput from "./unistyleUI/DropdownInput";
 
 import InputWithButton from "./unistyleUI/InputWithButton";
-import SwitchInputAni from "./unistyleUI/SwitchInputAnimated";
 
 const Demo = () => {
   return (
@@ -20,11 +19,11 @@ const Demo = () => {
       {new Array(COUNT / 5).fill(0).map((_, i) => (
         <ScopedTheme key={i} name={i % 2 === 0 ? "dark" : "light"}>
           <View key={i} style={styles.complexCard}>
-            <TextAreaInput />
+            <TextAreaInput index={i} />
             <CheckBoxInput index={i} />
             <SwitchInput index={i} />
             <RadioInput index={i} />
-            <DropdownInput />
+            <DropdownInput index={i} />
             <InputWithButton index={i} />
           </View>
         </ScopedTheme>
@@ -43,6 +42,8 @@ const styles = StyleSheet.create((theme) => ({
   complexCard: {
     width: 160,
     padding: 5,
+    borderColor: theme.colors.black,
+    borderWidth: 2,
     gap: theme.spacing.m,
     backgroundColor: theme.colors.gray,
     borderRadius: theme.spacing.xs,

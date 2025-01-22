@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Switch } from 'react-native';
 import styled from 'styled-components/native';
 
@@ -22,7 +22,7 @@ const Label = styled.Text`
 `;
 
 const SwitchInput: React.FC<{ index?: number }> = ({ index = 0 }) => {
-  const [isEnabled, setIsEnabled] = React.useState(true);
+  const [isEnabled, setIsEnabled] = useState(true);
 
   return (
     <Container>
@@ -30,6 +30,7 @@ const SwitchInput: React.FC<{ index?: number }> = ({ index = 0 }) => {
         value={isEnabled}
         onValueChange={setIsEnabled}
         accessibilityLabel={`Switch ${index}`}
+        accessibilityRole="switch"
       />
       <Label>Switch</Label>
     </Container>

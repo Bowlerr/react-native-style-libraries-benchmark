@@ -25,12 +25,12 @@ const styles = StyleSheet.create({
   checkmark: {
     width: 12,
     height: 12,
-    backgroundColor: '#ffffff', // Assuming light background
+    backgroundColor: '#ffffff',
     borderRadius: 10000,
   },
   label: {
-    marginLeft: 8, // Adjust this for spacing
-    color: '#6c757d', // Assuming a secondary colour
+    marginLeft: 10, 
+    color: '#6c757d', 
   },
 });
 
@@ -91,13 +91,11 @@ const Checkbox = ({ value, onPress, label, index }) => {
 
 export default function CheckboxInput({ index = 0 }) {
   return (
-    <View style={{ padding: 16 }}>
       <Checkbox
         value={false}
         onPress={() => console.log('Checkbox toggled')}
         label="Checkbox"
         index={index}
       />
-    </View>
   );
 }

@@ -32,7 +32,7 @@ const Checkmark = styled(Animated.View)`
 `;
 
 const Label = styled.Text`
-  margin-left: 8px;
+  margin-left: 10px;
   color: #6c757d;
 `;
 

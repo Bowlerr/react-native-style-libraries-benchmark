@@ -1,5 +1,5 @@
 // SwitchInput.tsx
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Switch, Text } from 'react-native';
 import { StyleSheet, withUnistyles } from 'react-native-unistyles';
 
@@ -19,7 +19,7 @@ interface SwitchInputProps {
 }
 
 const SwitchInput: React.FC<SwitchInputProps> = ({ index = 0 }) => {
-  const [isEnabled, setIsEnabled] = React.useState(true);
+  const [isEnabled, setIsEnabled] = useState(true);
 
   return (
     <View style={styles.container}>

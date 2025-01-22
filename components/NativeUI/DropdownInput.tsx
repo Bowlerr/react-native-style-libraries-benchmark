@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -18,9 +18,9 @@ import Animated, {
 } from 'react-native-reanimated';
 
 const DropdownInput = ({ index = 0 }) => {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const [selectedValue, setSelectedValue] = React.useState('Select Option');
-  const dropdownTranslateY = useSharedValue(300); // Start below the viewport
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedValue, setSelectedValue] = useState('Select Option');
+  const dropdownTranslateY = useSharedValue(300); 
   const dropdownRef = React.useRef<View>(null);
 
   const options = [
@@ -44,7 +44,7 @@ const DropdownInput = ({ index = 0 }) => {
 
   const closeDropdown = () => {
     dropdownTranslateY.value = withSpring(300, { damping: 20, stiffness: 150 }, () => {
-      runOnJS(setIsOpen)(false); // Close the dropdown after animation completes
+      runOnJS(setIsOpen)(false);
     });
   };
 
@@ -54,7 +54,7 @@ const DropdownInput = ({ index = 0 }) => {
   }));
 
   const backgroundStyle = useAnimatedStyle(() => ({
-    opacity: interpolate(dropdownTranslateY.value, [0, 300], [1, 0]),
+    opacity: interpolate(dropdownTranslateY.value, [0, 200], [1, 0]),
   }));
 
   return (
@@ -79,7 +79,7 @@ const DropdownInput = ({ index = 0 }) => {
         visible={isOpen}
         animationType="none"
         onRequestClose={closeDropdown}
-        accessibilityViewIsModal={true} // Indicates the modal contains focused content
+        accessibilityViewIsModal={true} 
         accessible={true}
       >
         <Pressable
@@ -128,11 +128,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 10,
     alignItems: 'center',
-    backgroundColor: '#ffffff', // Background colour
+    backgroundColor: '#ffffff',
 
   },
   trigger: {
-    padding: 12,
+    padding: 16,
     borderRadius: 3,
   },
   overlay: {
@@ -142,25 +142,25 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   label: {
-    color: '#6c757d', // Secondary colour
+    color: '#6c757d', 
   },
   header: {
     fontWeight: 'bold',
-    padding: 8, // Equivalent to `theme.spacing.s`
-    color: '#6c757d', // Secondary colour
+    padding: 10,
+    color: '#6c757d', 
   },
   dropdown: {
     width: '100%',
-    backgroundColor: '#ffffff', // Background colour
-    padding: 8, // Equivalent to `theme.spacing.s`
+    backgroundColor: '#ffffff',
+    padding: 10,
     elevation: 5,
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
   },
   item: {
-    padding: 8, // Equivalent to `theme.spacing.s`
+    padding: 10,
     borderBottomWidth: 1,
-    borderBottomColor: '#000000', // Black colour
+    borderBottomColor: '#000000', 
   },
 });
 

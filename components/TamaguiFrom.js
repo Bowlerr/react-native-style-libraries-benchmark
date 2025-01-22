@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   TamaguiProvider,
   Stack,
@@ -64,7 +64,7 @@ const SwitchInput = ({ i = 0 }) => {
 };
 
 const DropdownInput = () => {
-  const [val, setVal] = React.useState("ux");
+  const [val, setVal] = useState("ux");
   return (
     <Select value={val} onValueChange={setVal} disablePreventBodyScroll>
       <Select.Trigger width={220} iconAfter={ChevronDown}>

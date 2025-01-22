@@ -16,7 +16,7 @@ const TextAreaInput = ({index = 0}) => (
 
 const styles = StyleSheet.create({
   textArea: {
-    borderColor: '#6c757d',
+    borderColor: '#007bff',
     borderWidth: 1,
     padding: 10,
     borderRadius: 20,

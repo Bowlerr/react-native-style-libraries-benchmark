@@ -43,6 +43,7 @@ import UILIBForm from "./components/RnUiLibForm";
 
 import TimedRender from "./components/TimedRender";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { COUNT } from "./utils";
 
 
 export default function App() {
@@ -139,11 +140,11 @@ export default function App() {
             title="Styled Components"
             onPress={onStyleTypePress("Styled Components")}
           />
-          <Button title="Tamagui" onPress={onStyleTypePress("Tamagui")} />
           <Button
             title="Unistyles"
             onPress={onStyleTypePress("Unistyles")}
           />
+          <Button title="Tamagui" onPress={onStyleTypePress("Tamagui")} />
           <Button
             title="Gluestack"
             onPress={onStyleTypePress("Gluestack")}
@@ -165,7 +166,7 @@ export default function App() {
           <TimedRender key={styleType + componentType}>
             <Text style={styles.text}>
               Rendering with <Text style={styles.bold}>{styleType ?? 'DISMOUNT'}</Text> (
-              {componentType})
+              {componentType} * {componentType === 'Form' ? COUNT/5 : COUNT})
             </Text>
           </TimedRender>
         

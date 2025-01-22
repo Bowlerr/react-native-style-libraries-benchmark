@@ -23,7 +23,8 @@ const InputWithButton: React.FC<{ i?: number }> = ({ i = 0 }) => {
 
   return (
     <Container>
-      <Input placeholder="Enter text here..." testID={`text-input-${i}`} />
+      <Input placeholder="Enter text here..."  testID={`text-input-${i}`}
+        accessibilityLabel="Input field" />
       <Button title="Submit" onPress={handlePress} />
     </Container>
   );

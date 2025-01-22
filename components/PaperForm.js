@@ -203,14 +203,12 @@ const Demo = () => {
       <ScrollView contentContainerStyle={styles.container}>
         {new Array(COUNT / 5).fill(0).map((_, i) => (
           <View key={i} style={styles.itemContainer}>
-            <View style={styles.innerContent}>
-              <TextAreaInput />
-              <CheckBoxInput i={i} />
-              <SwitchInput i={i} />
-              <RadioInput i={i} />
-              <DropdownInput />
-              <InputWithButton i={i} />
-            </View>
+            <TextAreaInput index={i} />
+            <CheckBoxInput i={i} />
+            <SwitchInput i={i} />
+            <RadioInput i={i} />
+            <DropdownInput index={i} />
+            <InputWithButton i={i} />
           </View>
         ))}
       </ScrollView>
@@ -220,18 +218,20 @@ const Demo = () => {
 
 const styles = StyleSheet.create({
   container: {
+    display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-around",
   },
   itemContainer: {
-    width: 140,
+    width: 160,
+    padding: 5,
     borderColor: "black",
     borderWidth: 2,
-    borderRadius: 6,
-    backgroundColor: "grey",
-    margin: 8,
-    alignItems: "center",
+    borderRadius: 5,
+    gap: 16,
+    backgroundColor: "darkgrey",
+    marginBottom: 10,
   },
   innerContent: {
     padding: 12,

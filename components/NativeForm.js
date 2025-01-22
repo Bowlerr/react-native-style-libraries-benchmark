@@ -17,11 +17,11 @@ const Demo = () => {
     <View style={styles.container}>
       {new Array(COUNT / 5).fill(0).map((_, i) => (
         <View key={i} style={styles.complexCard}>
-          <TextAreaInput />
+          <TextAreaInput index={i} />
           <CheckBoxInput index={i} />
           <SwitchInput index={i} />
           <RadioInput index={i} />
-          <DropdownInput />
+          <DropdownInput index={i} />
           <InputWithButton index={i} />
         </View>
       ))}
@@ -38,12 +38,13 @@ const styles = StyleSheet.create({
   },
   complexCard: {
     width: 160,
-    borderRadius: 8,
-    backgroundColor: "darkgrey",
     padding: 5,
-    gap: 5,
-    elevation: 5,
-    marginBottom: 15,
+    borderColor: "black",
+    borderWidth: 2,
+    borderRadius: 5,
+    gap: 16,
+    backgroundColor: "darkgrey",
+    marginBottom: 10,
   },
 });
 

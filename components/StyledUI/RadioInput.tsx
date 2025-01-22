@@ -15,7 +15,7 @@ const Container = styled.View`
 `;
 
 const Heading = styled.Text`
-  margin-bottom: 4px;
+  margin-bottom: 5px;
   color: #000000;
 `;
 

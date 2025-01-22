@@ -95,7 +95,7 @@ const RadioInput: React.FC<{ index?: number }> = ({ index = 0 }) => {
 
 const styles = StyleSheet.create({
   heading: {
-    marginBottom: 6, 
+    marginBottom: 5, 
     color: '#000000', 
   },
   radioGroupContainer: {

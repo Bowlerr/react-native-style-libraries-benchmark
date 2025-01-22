@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Switch, Text, StyleSheet } from 'react-native';
 
 interface SwitchInputProps {
@@ -6,7 +6,7 @@ interface SwitchInputProps {
 }
 
 const SwitchInput: React.FC<SwitchInputProps> = ({ index = 0 }) => {
-  const [isEnabled, setIsEnabled] = React.useState(true);
+  const [isEnabled, setIsEnabled] = useState(true);
 
   return (
     <View style={styles.container}>
